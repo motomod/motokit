@@ -1,0 +1,17 @@
+#wrap {
+	height: 900px;
+	width: 900px;
+	background: #444;
+}
+
+.banner1 {
+	width: 900px;
+	height: 200px;
+	background: url('images/dingo.jpg');
+}
+
+.nav1 {
+	width: 900px;
+	height: 50px;
+	background: #cecece;
+}
