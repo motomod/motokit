@@ -17,20 +17,18 @@ class Moto_Autoloader
 	/* Initiate seach and include if found */
 	public static function load($class_name)
 	{
-		$ml = new self;
-
 		/* Find file by class name */
 		$location = Moto_Find::instance()->search('class', $class_name);
-		
-		/*
-		echo "<pre>";
-		var_dump($class_name, $location);
-		echo "</pre>";
-		*/
 
+		/* If File exists, include it */
 		if ($location != FALSE)
 		{
 			include($location);
+			return TRUE;
+		}
+		else
+		{
+			return FALSE;
 		}
 	}
 

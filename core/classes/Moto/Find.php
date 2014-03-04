@@ -8,7 +8,7 @@
 class Moto_Find {
 
 	private $_search_directories = array(
-		/*"Modules",*/ "", "core"
+		"", "core"
 	);
 
 	private $_sub_directories = array(
@@ -18,6 +18,7 @@ class Moto_Find {
 
 	static $instance;
 
+	/* Create as singleton */
 	public static function instance()
 	{
 		if (self::$instance == false)
@@ -35,16 +36,19 @@ class Moto_Find {
 	{
 		if (!empty($modules))
 		{
-			// Set new search paths with first directory still being main classes folder
-			$search_paths = array(current($this->_search_directories));
+			/* Set new search paths with first directory still being main classes folder */
+			$search_paths[0] = array_shift($this->_search_directories);
 
+			/* Iterate through modules and add them to our search directories */
 			foreach($modules as $module)
 			{
 				$search_paths[] = 'modules/' . $module;
 			}
 
-			$search_paths[] = end($this->_search_directories);
+			/* Add the rest of the folders to the array */
+			$search_paths = array_merge($search_paths, $this->_search_directories);
 
+			/* Overwrite default folders with all folders */
 			$this->_search_directories = $search_paths;
 		}
 
