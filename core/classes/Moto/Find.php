@@ -57,8 +57,6 @@ class Moto_Find {
 
 	public function search($type, $name)
 	{
-		$find = new self;
-
 		/* Get use remaining class bits to calculate direcoties */
 		$directories = explode('_', $name);
 
@@ -66,7 +64,7 @@ class Moto_Find {
 		$filename = array_pop($directories);
 
 		/* Check all directories */
-		foreach($find->_search_directories as $dir)
+		foreach(Moto_Find::instance()->_search_directories as $dir)
 		{
 			$path = '../' . $dir . '/'. $this->_sub_directories[$type] .'/' . implode("/", $directories) . '/' . $filename . '.php';
 
